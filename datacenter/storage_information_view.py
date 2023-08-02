@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from datacenter.models import Passcard
 from datacenter.models import Visit
 from django.shortcuts import render
+from datacenter.format_duration import format_duration, get_duration
 
 
 def storage_information_view(request):
@@ -10,7 +11,7 @@ def storage_information_view(request):
 
     in_repository = Visit.objects.filter(leaved_at=None)
     for person in in_repository:
-        duration = format_duration(get_duration(person))
+        duration = format_duration(str(get_duration(person)))
 
         visit = {
             'who_entered': person.passcard.owner_name,
@@ -22,15 +23,6 @@ def storage_information_view(request):
 
     context = {
 
-        'non_closed_visits': non_closed_visits,  # не закрытые посещения
+        'non_closed_visits': non_closed_visits,
     }
     return render(request, 'storage_information.html', context)
-
-
-def get_duration(vizit):
-    time_in_repository = str(localtime() - vizit.entered_at)
-    return time_in_repository
-
-
-def format_duration(duration):
-    return datetime.strptime(duration, '%H:%M:%S.%f').strftime('%H:%M')
