@@ -11,12 +11,14 @@ def storage_information_view(request):
 
     in_repository = Visit.objects.filter(leaved_at=None)
     for person in in_repository:
-        duration = format_duration(str(get_duration(person)))
 
+        duration = format_duration(str(get_duration(person)))
         visit = {
             'who_entered': person.passcard.owner_name,
             'entered_at': person.entered_at,
-            'duration': duration
+            'duration': duration,
+            'is_strange': get_duration(person) > timedelta(hours=1111)
+
         }
 
         non_closed_visits.append(visit)
