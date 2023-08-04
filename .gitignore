@@ -3,3 +3,5 @@
 /datacenter/__pycache__
 /project/__pycache__/
 sensitive_information.env
+project/__pycache__/urls.cpython-311.pyc
+project/__pycache__/settings.cpython-311.pyc
