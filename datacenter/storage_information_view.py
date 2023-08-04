@@ -17,7 +17,7 @@ def storage_information_view(request):
             'who_entered': person.passcard.owner_name,
             'entered_at': person.entered_at,
             'duration': duration,
-            'is_strange': get_duration(person) > timedelta(hours=1111)
+            'is_strange': get_duration(person) > timedelta(hours=1)
 
         }
 
