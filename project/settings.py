@@ -1,21 +1,26 @@
 import os
+from environs import Env
+
+
+env = Env()
+Env.read_env('sensitive_information.env')
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'HOST': 'checkpoint.devman.org',
-        'PORT': '5434',
-        'NAME': 'checkpoint',
-        'USER': 'guard',
-        'PASSWORD': 'osim5',
+        'ENGINE': env('ENGINE'),
+        'HOST': env('HOST'),
+        'PORT': env('PORT'),
+        'NAME': env('NAME'),
+        'USER': env('USER'),
+        'PASSWORD': env('PASSWORD'),
     }
 }
 
 INSTALLED_APPS = ['datacenter']
 
-SECRET_KEY = 'REPLACE_ME'
+SECRET_KEY = env('SECRET_KEY')
 
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ROOT_URLCONF = 'project.urls'
 
@@ -34,10 +39,10 @@ TEMPLATES = [
 
 USE_L10N = True
 
-LANGUAGE_CODE = 'ru-ru'
+LANGUAGE_CODE = env('LANGUAGE_CODE')
 
-TIME_ZONE = 'Europe/Moscow'
+TIME_ZONE = env('TIME_ZONE')
 
 USE_TZ = True
 
-DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+DEFAULT_AUTO_FIELD = env('DEFAULT_AUTO_FIELD')
