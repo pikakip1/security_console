@@ -16,28 +16,33 @@
 
 Скачайте архив, или сделайте клон репозитория на ваш компьютер.  
 
-В консоли введите команду по установки библиотек:  
+В консоли введите 2 команды по установке библиотек:  
 
 ```
-pip install -r requirements.txt
+pip install poetry
+
+poetry install
 ```
 
 В корневой папке создайте файл sensitive_information.env и присвойте переменным значения для доступа к базе данных.  
 
 Ниже перечислены переменные для подключения базы данных.  
 
+Переменные по умолчанию вводить необязательно.
+
 ```
-ENGINE
-HOST
-PORT
-NAME
-USER
-PASSWORD
+DB_ENGINE
+DB_HOST
+DB_PORT
+DB_NAME
+DB_USER
+DB_PASSWORD
 SECRET_KEY
-DEBUG
-DEFAULT_AUTO_FIELD
-TIME_ZONE
-LANGUAGE_CODE
+DEBUG <по умолчанию False>
+DEFAULT_AUTO_FIELD <по умолчанию django.db.models.AutoField>
+TIME_ZONE <по умолчанию Europe/Moscow>
+LANGUAGE_CODE <по умолчанию ru-ru>
+ALLOWED_HOSTS <по умолчанию *>
 ```
 
 Если переменной DEBUG присвоить значение True, то при появлении ошибки запроса пользователь увидит отладочную информацию.  
