@@ -3,16 +3,16 @@ from environs import Env
 
 
 env = Env()
-Env.read_env('sensitive_information.env')
+env.read_env('sensitive_information.env')
 
 DATABASES = {
     'default': {
-        'ENGINE': env('ENGINE'),
-        'HOST': env('HOST'),
-        'PORT': env('PORT'),
-        'NAME': env('NAME'),
-        'USER': env('USER'),
-        'PASSWORD': env('PASSWORD'),
+        'ENGINE': env('DB_ENGINE'),
+        'HOST': env('DB_HOST'),
+        'PORT': env('DB_PORT'),
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
     }
 }
 
@@ -20,11 +20,11 @@ INSTALLED_APPS = ['datacenter']
 
 SECRET_KEY = env('SECRET_KEY')
 
-DEBUG = env('DEBUG')
+DEBUG = env('DEBUG', False)
 
 ROOT_URLCONF = 'project.urls'
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', '*')
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -39,10 +39,10 @@ TEMPLATES = [
 
 USE_L10N = True
 
-LANGUAGE_CODE = env('LANGUAGE_CODE')
+LANGUAGE_CODE = env('LANGUAGE_CODE', 'ru-ru')
 
-TIME_ZONE = env('TIME_ZONE')
+TIME_ZONE = env('TIME_ZONE', 'Europe/Moscow')
 
 USE_TZ = True
 
-DEFAULT_AUTO_FIELD = env('DEFAULT_AUTO_FIELD')
+DEFAULT_AUTO_FIELD = env('DEFAULT_AUTO_FIELD', 'django.db.models.AutoField')
