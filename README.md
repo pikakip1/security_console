@@ -28,7 +28,7 @@ poetry install
 
 Ниже перечислены переменные для подключения базы данных.  
 
-Переменные по умолчанию вводить необязательно.
+Переменная DEBUG по умолчанию равна False.
 
 ```
 DB_ENGINE
@@ -38,11 +38,8 @@ DB_NAME
 DB_USER
 DB_PASSWORD
 SECRET_KEY
+ALLOWED_HOSTS 
 DEBUG <по умолчанию False>
-DEFAULT_AUTO_FIELD <по умолчанию django.db.models.AutoField>
-TIME_ZONE <по умолчанию Europe/Moscow>
-LANGUAGE_CODE <по умолчанию ru-ru>
-ALLOWED_HOSTS <по умолчанию *>
 ```
 
 Если переменной DEBUG присвоить значение True, то при появлении ошибки запроса пользователь увидит отладочную информацию.  
